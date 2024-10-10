@@ -1,5 +1,34 @@
-export async function readPost(id) {}
+import { API_SOCIAL_POSTS } from "../constants";
+import { headers } from "../headers";
 
-export async function readPosts(limit = 12, page = 1, tag) {}
+export async function readPost(id) {
+  if (!id) {
+    throw new Error("This call needs an id");
+  }
 
-export async function readPostsByUser(username, limit = 12, page = 1, tag) {}
+  const response = await fetch(`${API_SOCIAL_POSTS}/${id}`, {
+    headers: headers(),
+  });
+
+  const json = await response.json();
+
+  if (!response.ok) {
+    throw new Error(json.errors[0].message);
+  }
+
+  return json;
+}
+
+export async function readPosts() {
+  const response = await fetch(`${API_SOCIAL_POSTS}`, {
+    headers: headers(),
+  });
+
+  const json = await response.json();
+
+  if (!response.ok) {
+    throw new Error(json.errors[0].message);
+  }
+
+  return json;
+}
