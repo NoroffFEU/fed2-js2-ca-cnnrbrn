@@ -12,6 +12,7 @@ export function displayMenu() {
     if (loggedin) {
       nav.innerHTML = `<a href="/">Home</a>
                             <a href="/profile/">My Profile</a>
+                            <a href="/post/create/">Create post</a>
                             <button id="logout-button">Logout</button>`;
 
       onLogout();
