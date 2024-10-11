@@ -1,3 +1,5 @@
+import { renderAdminButtons } from "./renderAdminButtons";
+
 export function renderPosts(container, posts) {
   if (posts.length === 0) {
     container.innerHTML = `<div class="message">No posts yet</div>`;
@@ -22,5 +24,12 @@ function createPostHTML(post) {
   titleEl.innerText = title;
 
   item.appendChild(titleEl);
+
+  const adminButtons = renderAdminButtons(post);
+
+  if (adminButtons) {
+    item.appendChild(adminButtons);
+  }
+
   return item;
 }

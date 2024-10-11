@@ -1,4 +1,5 @@
 const TOKEN = "token";
+const NAME = "name";
 
 function save(key, value) {
   localStorage.setItem(key, JSON.stringify(value));
@@ -10,6 +11,10 @@ function load(key) {
 
 function remove(key) {
   localStorage.removeItem(key);
+}
+
+export function clear() {
+  localStorage.clear();
 }
 
 export function saveToken(token) {
@@ -26,4 +31,12 @@ export function removeToken() {
 
 export function isAuthenticated() {
   return !!loadToken();
+}
+
+export function saveName(name) {
+  save(NAME, name);
+}
+
+export function loadName() {
+  return load(NAME);
 }

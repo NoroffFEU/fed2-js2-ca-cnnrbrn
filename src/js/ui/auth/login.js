@@ -1,6 +1,6 @@
 import { login } from "../../api/auth/login.js";
 import { displayMessage } from "../../components/shared/displayMessage.js";
-import { saveToken } from "../../utilities/storage.js";
+import { saveName, saveToken } from "../../utilities/storage.js";
 
 export async function onLogin(event) {
   event.preventDefault();
@@ -11,7 +11,9 @@ export async function onLogin(event) {
 
   try {
     const { data } = await login(userData);
-    saveToken(data.accessToken);
+    const { accessToken, name } = data;
+    saveToken(accessToken);
+    saveName(name);
     window.location.href = "/";
   } catch (error) {
     console.log(error);

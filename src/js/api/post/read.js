@@ -20,7 +20,7 @@ export async function readPost(id) {
 }
 
 export async function readPosts() {
-  const response = await fetch(`${API_SOCIAL_POSTS}`, {
+  const response = await fetch(`${API_SOCIAL_POSTS}?_author=true`, {
     headers: headers(),
   });
 
