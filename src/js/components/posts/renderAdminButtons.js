@@ -1,3 +1,4 @@
+import { onDeletePost } from "../../ui/post/delete";
 import { loadName } from "../../utilities/storage";
 
 export function renderAdminButtons(post) {
@@ -20,6 +21,8 @@ export function renderAdminButtons(post) {
 
   const deleteButton = document.createElement("button");
   deleteButton.innerText = "Delete";
+  deleteButton.dataset.id = id;
+  deleteButton.addEventListener("click", onDeletePost);
 
   div.appendChild(editButton);
   div.appendChild(deleteButton);
